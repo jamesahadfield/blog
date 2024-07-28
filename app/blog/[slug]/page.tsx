@@ -26,17 +26,6 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export async function generateStaticParams() {
-  const allPostsData = await getSortedPostsData();
-
-  return allPostsData.map((post) => {
-    return {
-      params: {
-        slug: post.id,
-      },
-    };
-  });
-}
 
 export default async function Page({ params }) {
   const { slug } = params;
