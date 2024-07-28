@@ -27,9 +27,7 @@ export async function generateStaticParams() {
 
   return allPostsData.map((post) => {
     return {
-      params: {
-        slug: post.id,
-      },
+      slug: post.id,
     };
   });
 }
