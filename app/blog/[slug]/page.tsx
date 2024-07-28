@@ -17,7 +17,6 @@ type PostData = {
   contentHtml: string;
 };
 
-
 export async function generateMetadata({ params }: Props) {
   const postData: PostData = await getPostData(params.slug);
 
@@ -26,6 +25,17 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+export async function generateStaticParams() {
+  const allPostsData = await getSortedPostsData();
+
+  return allPostsData.map((post) => {
+    return {
+      params: {
+        slug: post.id,
+      },
+    };
+  });
+}
 
 export default async function Page({ params }) {
   const { slug } = params;
@@ -35,17 +45,17 @@ export default async function Page({ params }) {
   return (
     <>
       {/* Post Title */}
-      <h1 className='font-extrabold text-3xl mb-1'>{postData.title}</h1>
+      <h1 className="font-extrabold text-3xl mb-1">{postData.title}</h1>
 
-      <div className='text-gray-500 font-medium mb-5'>
+      <div className="text-gray-500 font-medium mb-5">
         <div> {postData.date} </div>
       </div>
 
       {/* Post Content */}
       <div
-        className='text-gray-600'
+        className="text-gray-600"
         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
       />
     </>
-  )
+  );
 }
