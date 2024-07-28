@@ -1,6 +1,3 @@
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
 import { getPostData, getSortedPostsData } from "../../../lib/posts";
 
 type Params = {
