@@ -35,7 +35,7 @@ const postsDirectory = path.join(process.cwd(), 'posts') // process.cwd() return
 
 export function getSortedPostsData() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory) // [ 'pre-rendering.md', 'ssg-ssr.md' ]
+  const fileNames = fs.readdirSync(postsDirectory);
 
   // Get the data from each file
   const allPostsData = fileNames.map((filename) => {

@@ -32,21 +32,19 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: Props) {
   const { slug } = params;
 
   const postData = await getPostData(slug);
 
   return (
     <>
-      {/* Post Title */}
       <h1 className="font-extrabold text-3xl mb-1">{postData.title}</h1>
 
       <div className="text-gray-500 font-medium mb-5">
         <div> {postData.date} </div>
       </div>
 
-      {/* Post Content */}
       <div
         className="text-gray-600"
         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
