@@ -1,0 +1,11 @@
+$color-primary: white;
+$color-secondary: red;
+$color-tertiary: rgb(0, 238, 255);
+
+.title {
+  color: $color-primary;
+}
+
+.titlebg {
+  background-color: $color-secondary;
+}
